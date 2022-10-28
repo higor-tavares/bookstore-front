@@ -26,7 +26,7 @@ const ListProducts = () => {
         products.map((product) => {
         return (<Col key={product.id}>
         <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnqFWsW0IRs_8hbIsgCQFAH1uQ_1vqS94WPg&usqp=CAU" />
+        <Card.Img variant="top" src={product.photo} />
         <Card.Body>
           <Card.Title>{product.name}</Card.Title>
           <Card.Text style={{height: '100px', overflow:'scroll'}}>

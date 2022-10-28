@@ -26,15 +26,15 @@ const ListProducts = () => {
         products.map((product) => {
         return (<Col key={product.id}>
         <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+        <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnqFWsW0IRs_8hbIsgCQFAH1uQ_1vqS94WPg&usqp=CAU" />
         <Card.Body>
           <Card.Title>{product.name}</Card.Title>
-          <Card.Text>
+          <Card.Text style={{height: '100px', overflow:'scroll'}}>
            {product.description}
           </Card.Text>
-          <Card.Footer >
-          <span>R$ {product.price/100}   </span>
-          <Button  variant="primary">add to cart</Button> 
+          <Card.Footer style={{display:'flex', justifyContent:'space-between'}}>
+          <div style={{alignSelf: 'flex-start', fontWeight:'bold'}}>R$ {product.price/100}   </div>
+          <div style={{alignSelf: 'flex-end'}}><Button  variant="primary">add to cart</Button></div> 
           </Card.Footer>
         </Card.Body>
       </Card>

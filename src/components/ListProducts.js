@@ -18,7 +18,7 @@ const ListProducts = () => {
       };
     return (
     <div>
-        <h3>PRODUTOS:</h3>
+        <h3 style={{fontSize: 18, margin: 16, fontWeight:'bold'}}>PRODUTOS:</h3>
         <br/>
         <Container>
         <Row xs={2} md={3} lg={3}>

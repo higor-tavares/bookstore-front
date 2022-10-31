@@ -1,10 +1,15 @@
 import React from "react";
 import { useState , useEffect} from "react";
 import { Card,Button, Row , Col, Container} from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { ADD_TO_CART } from "./actions/actions";
 const ListProducts = () => {
 
     const [products, setProducts] =  useState(Array.from([]));
-
+    const dispach = useDispatch()
+    const addToCart = (item) => {
+      dispach({type: ADD_TO_CART.type, payload: item });
+    }
     useEffect(() => {
         fetchData();
       }, []);
@@ -34,7 +39,7 @@ const ListProducts = () => {
           </Card.Text>
           <Card.Footer style={{display:'flex', justifyContent:'space-between'}}>
           <div style={{alignSelf: 'flex-start', fontWeight:'bold'}}>R$ {product.price/100}   </div>
-          <div style={{alignSelf: 'flex-end'}}><Button  variant="primary">add to cart</Button></div> 
+          <div style={{alignSelf: 'flex-end'}}><Button  variant="primary" onClick={() => addToCart(product)}>add to cart</Button></div> 
           </Card.Footer>
         </Card.Body>
       </Card>

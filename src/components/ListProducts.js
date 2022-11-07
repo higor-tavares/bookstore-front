@@ -2,13 +2,15 @@ import React from "react";
 import { useState , useEffect} from "react";
 import { Card,Button, Row , Col, Container} from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { ADD_TO_CART } from "./actions/actions";
+import { ADD_TO_CART, REMOVE_MESSAGE, SUCCESSFULY_ADDED_TO_CART } from "./actions/actions";
 const ListProducts = () => {
 
     const [products, setProducts] =  useState(Array.from([]));
     const dispach = useDispatch()
     const addToCart = (item) => {
       dispach({type: ADD_TO_CART.type, payload: item });
+      dispach({type: SUCCESSFULY_ADDED_TO_CART.type})
+      setTimeout(()=>{dispach({type: REMOVE_MESSAGE.type})}, 2000);
     }
     useEffect(() => {
         fetchData();

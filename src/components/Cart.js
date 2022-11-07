@@ -19,5 +19,8 @@ function Cart ({produtos=[]}) {
     </Card>
   )
 }
-const mapStateToProps = (state) => { return  {produtos: state.cartItems}}
+const mapStateToProps = (state) => { 
+  console.log(state);
+  return  {produtos: state.cart.items}
+}
 export default connect(mapStateToProps)(Cart);

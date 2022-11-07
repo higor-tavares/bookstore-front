@@ -1,11 +1,11 @@
 import { ADD_TO_CART } from "../components/actions/actions";
 
 const initialState = {
-    cartItems: new Array()
+    items: new Array()
 }
-const rootReducer = (state = initialState, action) => {
+const cartReducer = (state = initialState, action) => {
     const item = action.payload
-    const items = state.cartItems;
+    const items = state.items;
     if(item == null){
         return state;
     }
@@ -13,10 +13,10 @@ const rootReducer = (state = initialState, action) => {
     if(action.type === ADD_TO_CART.type){
         return {
             ...state,
-            cartItems: items
+            items: items
         }
     }
     return state;
 }
 
-export default rootReducer;
+export default cartReducer;

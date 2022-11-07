@@ -3,6 +3,8 @@ import { useState , useEffect} from "react";
 import { Card,Button, Row , Col, Container} from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { ADD_TO_CART, REMOVE_MESSAGE, SUCCESSFULY_ADDED_TO_CART } from "./actions/actions";
+import integerToCurrency from "../utils/CurrencyUtil";
+
 const ListProducts = () => {
 
     const [products, setProducts] =  useState(Array.from([]));
@@ -40,7 +42,7 @@ const ListProducts = () => {
            {product.description}
           </Card.Text>
           <Card.Footer style={{display:'flex', justifyContent:'space-between'}}>
-          <div style={{alignSelf: 'flex-start', fontWeight:'bold'}}>R$ {product.price/100}   </div>
+          <div style={{alignSelf: 'flex-start', fontWeight:'bold'}}>{integerToCurrency(product.price)}   </div>
           <div style={{alignSelf: 'flex-end'}}><Button  variant="primary" onClick={() => addToCart(product)}>add to cart</Button></div> 
           </Card.Footer>
         </Card.Body>

@@ -4,18 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { combineReducers, legacy_createStore as  createStore, compose } from 'redux';
+import { combineReducers, legacy_createStore as  createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import cartReducer from "./reducers/cartReducer";
 import messageReducer from './reducers/messageReducer';
+import productsReducer from './reducers/productsReducer';
+import thunk from 'redux-thunk';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
 const rootReducer = combineReducers({
   cart: cartReducer ,
-  messages : messageReducer
+  messages : messageReducer,
+  products: productsReducer,
 });
-const store = createStore(rootReducer, composeEnhancers());
+const store = createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)));
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(

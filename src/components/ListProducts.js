@@ -1,30 +1,24 @@
 import React from "react";
-import { useState , useEffect} from "react";
+import { useEffect} from "react";
 import { Card,Button, Row , Col, Container} from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { ADD_TO_CART, REMOVE_MESSAGE, SUCCESSFULY_ADDED_TO_CART } from "./actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { ADD_TO_CART, REMOVE_MESSAGE, SUCCESSFULY_ADDED_TO_CART, fetchProducts } from "./actions/actions";
 import integerToCurrency from "../utils/CurrencyUtil";
 
 const ListProducts = () => {
 
-    const [products, setProducts] =  useState(Array.from([]));
-    const dispach = useDispatch()
-    const addToCart = (item) => {
-      dispach({type: ADD_TO_CART.type, payload: item });
+    const products =  useSelector((state)=>state.products.items);
+    
+    const dispach = useDispatch();
+
+    useEffect(() => { dispach(fetchProducts()) }, []);
+
+    const addToCart = (p) => {
+      dispach({type: ADD_TO_CART.type, payload: p });
       dispach({type: SUCCESSFULY_ADDED_TO_CART.type})
       setTimeout(()=>{dispach({type: REMOVE_MESSAGE.type})}, 2000);
     }
-    useEffect(() => {
-        fetchData();
-      }, []);
       
-      const fetchData = async () => {
-        const response = await fetch(
-          "http://localhost:8080/products/"
-        );
-        const jsonData = await response.json();
-        setProducts(jsonData);
-      };
     return (
     <div>
         <h3 style={{fontSize: 18, margin: 16, fontWeight:'bold'}}>PRODUTOS:</h3>

@@ -10,6 +10,7 @@ import cartReducer from "./reducers/cartReducer";
 import messageReducer from './reducers/messageReducer';
 import productsReducer from './reducers/productsReducer';
 import thunk from 'redux-thunk';
+import modalReducer from './reducers/modalReducer';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   cart: cartReducer ,
   messages : messageReducer,
   products: productsReducer,
+  modal: modalReducer
 });
 const store = createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)));
 const root = ReactDOM.createRoot(document.getElementById('root'));
